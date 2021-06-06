@@ -63,10 +63,70 @@ rules and facts. Identify a rules engine for your programming language and use i
 
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class App {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
+        String response;
+        String y = "y";
 
-        System.out.println("");
+        System.out.println("Is the car silent when you turn the key? (y or n)");
+        response = in.next();
+
+        if (response.equals(y)) {
+            System.out.println("Are the battery terminals corroded?");
+            response = in.next();
+
+            if (response.equals(y)) {
+                System.out.println("The terminals may be dirty.\nClean terminals and try starting again.");
+                exit(0);
+            }
+            else{
+                System.out.println("The battery cables may be damaged.\nReplace cables and try again.");
+                exit(0);
+            }
+        }
+        else{
+            System.out.println("Does the car make a slicking noise?");
+            response = in.next();
+
+            if (response.equals(y)) {
+                System.out.println("The battery might be dead.\nReplace the battery.");
+                exit(0);
+            }
+            else{
+                System.out.println("Does the car crank up but fail to start?");
+                response = in.next();
+
+                if (response.equals(y)) {
+                    System.out.println("Spark plugs might not be placed correctly.\nCheck spark plug connections.");
+                    exit(0);
+                }
+                else{
+                    System.out.println("Does the engine start and then die?");
+                    response = in.next();
+
+                    if (response.equals(y)) {
+                        System.out.println("Does you car have fuel injection?");
+                        response = in.next();
+
+                        if (response.equals(y)) {
+                            System.out.println("Get it in for service.");
+                            exit(0);
+                        }
+                        else{
+                            System.out.println("There may be an issue with the choke.\nCheck to ensure the choke is " +
+                                    "opening and closing.");
+                            exit(0);
+                        }
+                    }
+                    else{
+                        System.out.println("This should not be possible.");
+                        exit(0);
+                    }
+                }
+            }
+        }
     }
 }
